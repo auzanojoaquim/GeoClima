@@ -125,7 +125,7 @@ function App() {
       {clima && <CartaoClima clima={clima} />}
       <Mapa coords={coordenadas} />
       <footer className="text-center">
-	<p>Desenvolvido por <a href="https://github.com/auzanojoaquim">Auzano Joaquim</a> — 2025</p>
+	<p>Desenvolvido por <a href="https://auzanojoaquim.vercel.app">Auzano Joaquim</a> — 2025</p>
       </footer>
     </div>
   );
