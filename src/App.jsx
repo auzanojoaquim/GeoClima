@@ -7,7 +7,6 @@ import {
 import Mapa from "./components/Mapa";
 import CartaoClima from "./components/CartaoClima";
 
-const CHAVE_API = import.meta.env.VITE_API_KEY;
 const CHAVE_HISTORICO = "geoclima:historico";
 const CHAVE_FAVORITOS = "geoclima:favoritos";
 const CHAVE_TEMA = "geoclima:tema";
@@ -51,27 +50,33 @@ function App() {
   useEffect(() => localStorage.setItem(CHAVE_FAVORITOS, JSON.stringify(favoritos)), [favoritos]);
 
   const consultarClima = useCallback(async (consulta, tipo = "q") => {
-    if (!CHAVE_API) {
-      definirErro("Configure a variável VITE_API_KEY no ficheiro .env para consultar os dados meteorológicos.");
-      return;
-    }
     definirCarregando(true);
     definirErro("");
     try {
-      const parametros = new URLSearchParams({ appid: CHAVE_API, units: "metric", lang: "pt" });
+      const parametros = new URLSearchParams({ tipo: "tempo" });
       if (tipo === "q") parametros.set("q", consulta);
       else {
         parametros.set("lat", String(consulta.latitude));
         parametros.set("lon", String(consulta.longitude));
       }
-      const respostaClima = await fetch(`https://api.openweathermap.org/data/2.5/weather?${parametros}`);
+      const respostaClima = await fetch(`/api/clima?${parametros}`);
       const dadosClima = await respostaClima.json();
-      if (!respostaClima.ok) throw new Error(dadosClima.message === "city not found" ? "Não encontrámos essa localidade. Verifique o nome e tente novamente." : "Não foi possível obter o clima. Tente novamente.");
+      if (!respostaClima.ok) {
+        const mensagem = dadosClima.erro === "cidade_nao_encontrada"
+          ? "Não encontrámos essa localidade. Verifique o nome e tente novamente."
+          : dadosClima.erro === "chave_invalida"
+            ? "A chave da OpenWeather não foi aceite. Confirme a variável API_KEY na Vercel."
+            : dadosClima.erro === "configuracao_em_falta"
+              ? "A variável API_KEY não está configurada no ambiente da Vercel."
+              : "Não foi possível obter o clima. Tente novamente.";
+        throw new Error(mensagem);
+      }
       const parametrosPrevisao = new URLSearchParams({
-        lat: String(dadosClima.coord.lat), lon: String(dadosClima.coord.lon),
-        appid: CHAVE_API, units: "metric", lang: "pt"
+        tipo: "previsao",
+        lat: String(dadosClima.coord.lat),
+        lon: String(dadosClima.coord.lon)
       });
-      const respostaPrevisao = await fetch(`https://api.openweathermap.org/data/2.5/forecast?${parametrosPrevisao}`);
+      const respostaPrevisao = await fetch(`/api/clima?${parametrosPrevisao}`);
       const dadosPrevisao = respostaPrevisao.ok ? await respostaPrevisao.json() : { list: [] };
       definirClima(dadosClima);
       definirCoordenadas([dadosClima.coord.lat, dadosClima.coord.lon]);
@@ -232,12 +237,7 @@ function App() {
 
       {favoritos.length > 0 && <section className="secao-favoritos"><div className="cabecalho-secao"><div><span className="sobretitulo">ACESSO RÁPIDO</span><h2>Locais guardados</h2></div></div><div className="lista-favoritos">{favoritos.map((item) => <button key={`${item.nome}-${item.pais}`} onClick={() => consultarClima(item, "coords")}><Heart size={16} fill="currentColor" /><span>{item.nome}<small>{item.pais}</small></span><span className="seta-favorito">↗</span></button>)}</div></section>}
 
-      <footer className="rodape">
-        <a className="marca marca-rodape" href="#" aria-label="GeoClima - voltar ao início"><span className="marca-icone"><CloudSun size={20} /></span><span>Geo<span>Clima</span></span></a>
-        <p>Informação meteorológica para explorar melhor o mundo.</p>
-        <span className="creditos-dados">Dados por OpenWeather · Mapas por OpenStreetMap</span>
-        <div className="credito-autor">Desenvolvido por <a href="https://auzanojoquim.vercel.app" target="_blank" rel="noreferrer">Auzano Joaquim</a></div>
-      </footer>
+      <footer className="rodape"><a className="marca marca-rodape" href="#"><span className="marca-icone"><CloudSun size={20} /></span><span>Geo<span>Clima</span></span></a><p>Informação meteorológica para explorar melhor o mundo.</p><span>Dados por OpenWeather · Mapas por OpenStreetMap</span><p className="credito-autor">Desenvolvido por <a href="https://auzanojoquim.vercel.app" target="_blank" rel="noreferrer">Auzano Joaquim</a></p></footer>
     </main>
   );
 }
