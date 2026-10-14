@@ -7,7 +7,7 @@ import {
 import Mapa from "./components/Mapa";
 import CartaoClima from "./components/CartaoClima";
 
-const CHAVE_API = "cbd5531fde7c0ddfa1671407a656a0f6";
+const CHAVE_API = import.meta.env.API_KEY;
 const CHAVE_HISTORICO = "geoclima:historico";
 const CHAVE_FAVORITOS = "geoclima:favoritos";
 const CHAVE_TEMA = "geoclima:tema";
