@@ -94,9 +94,44 @@ function App() {
   }, []);
 
   useEffect(() => {
+    let desmontado = false;
     const ultimoLocal = lerArmazenamento("geoclima:ultimo", null);
-    if (ultimoLocal) consultarClima(ultimoLocal, "coords");
-  // A última localização é restaurada quando a aplicação abre.
+
+    const carregarUltimoLocal = () => {
+      if (!desmontado && ultimoLocal) consultarClima(ultimoLocal, "coords");
+    };
+
+    if (!navigator.geolocation) {
+      carregarUltimoLocal();
+      if (!ultimoLocal) definirErro("Este navegador não permite obter a localização automaticamente. Pesquise uma cidade ou use um navegador compatível.");
+      return () => { desmontado = true; };
+    }
+
+    // Ao abrir, tenta obter a localização atual; se falhar, recupera a última localidade consultada.
+    definirCarregando(true);
+    navigator.geolocation.getCurrentPosition(
+      ({ coords }) => {
+        if (!desmontado) consultarClima({ latitude: coords.latitude, longitude: coords.longitude }, "coords");
+      },
+      (falha) => {
+        if (desmontado) return;
+        if (ultimoLocal) {
+          carregarUltimoLocal();
+          return;
+        }
+        definirCarregando(false);
+        const mensagens = {
+          1: "O acesso à localização foi recusado. Autorize a localização no navegador ou pesquise uma cidade.",
+          2: "Não foi possível determinar a localização atual. Verifique o GPS ou a ligação à internet e tente novamente.",
+          3: "A localização demorou demasiado tempo. Tente novamente ou pesquise uma cidade."
+        };
+        definirErro(mensagens[falha.code] || "Não foi possível obter a localização. Pesquise uma cidade para consultar o clima.");
+      },
+      { enableHighAccuracy: false, timeout: 15000, maximumAge: 300000 }
+    );
+
+    return () => { desmontado = true; };
+  // A geolocalização é tentada uma vez ao iniciar a aplicação.
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -111,18 +146,28 @@ function App() {
   };
 
   const localizarUtilizador = () => {
+    definirErro("");
+    if (!window.isSecureContext) {
+      definirErro("A localização só funciona em HTTPS ou em localhost. Abra a versão publicada na Vercel através de HTTPS.");
+      return;
+    }
     if (!navigator.geolocation) {
-      definirErro("Este navegador não disponibiliza geolocalização.");
+      definirErro("Este navegador não disponibiliza geolocalização. Pesquise uma cidade manualmente.");
       return;
     }
     definirCarregando(true);
     navigator.geolocation.getCurrentPosition(
       ({ coords }) => consultarClima({ latitude: coords.latitude, longitude: coords.longitude }, "coords"),
-      () => {
+      (falha) => {
         definirCarregando(false);
-        definirErro("Não foi possível obter a localização. Autorize o acesso à localização e tente novamente.");
+        const mensagens = {
+          1: "O acesso à localização foi recusado. Ative a permissão de localização nas definições do navegador e tente novamente.",
+          2: "O dispositivo não conseguiu determinar a localização. Ative o GPS ou verifique a ligação à internet.",
+          3: "A localização demorou demasiado tempo. Tente novamente num local com melhor sinal."
+        };
+        definirErro(mensagens[falha.code] || "Não foi possível obter a localização. Pesquise uma cidade para continuar.");
       },
-      { enableHighAccuracy: true, timeout: 12000 }
+      { enableHighAccuracy: false, timeout: 15000, maximumAge: 60000 }
     );
   };
 

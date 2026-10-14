@@ -134,3 +134,37 @@
 .rodape .credito-autor { margin: 10px 0 0; font-size: 12px; color: var(--texto-suave); }
 .rodape .credito-autor a { color: var(--azul); font-weight: 700; text-decoration: none; }
 .rodape .credito-autor a:hover { text-decoration: underline; }
+
+
+/* Refinamentos visuais: preservam a identidade azul e a composição original. */
+.aplicacao { position: relative; isolation: isolate; }
+.aplicacao::before { content:""; position:fixed; inset:0 0 auto; height:360px; z-index:-1; pointer-events:none; background:radial-gradient(ellipse at 12% 0%, rgba(82,119,237,.075), transparent 58%); }
+.cabecalho { position:relative; }
+.marca { transition:opacity .2s ease; }
+.marca:hover { opacity:.82; }
+.marca-icone { box-shadow:inset 0 0 0 1px rgba(53,99,233,.06); }
+.introducao { border-radius:0 0 20px 20px; }
+.sobretitulo { line-height:1.5; }
+.pesquisa-painel { transition:border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
+.pesquisa-painel:focus-within { border-color:rgba(53,99,233,.42); box-shadow:0 14px 40px rgba(33,54,100,.09), 0 0 0 4px rgba(53,99,233,.055); }
+.formulario-pesquisa input { min-height:42px; }
+.botao-pesquisar,.botao-localizacao,.botao-secundario,.atalhos-locais button,.lista-favoritos button,.seletor-previsao button { transition:transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease; }
+.botao-pesquisar:hover,.botao-localizacao:hover,.botao-secundario:hover,.atalhos-locais button:hover,.lista-favoritos button:hover { transform:translateY(-2px); }
+.cartao-temperatura,.cartao-detalhes,.secao-previsao,.secao-mapa,.secao-favoritos { transition:border-color .2s ease, box-shadow .2s ease; }
+.cartao-temperatura:hover,.cartao-detalhes:hover,.secao-previsao:hover,.secao-mapa:hover,.secao-favoritos:hover { border-color:color-mix(in srgb, var(--azul) 22%, var(--borda)); box-shadow:0 16px 42px rgba(33,54,100,.075); }
+.cartao-dia { transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
+.cartao-dia:hover { transform:translateY(-3px); border-color:rgba(53,99,233,.25); box-shadow:0 9px 24px rgba(33,54,100,.07); }
+.lista-favoritos button:hover { border-color:rgba(53,99,233,.35); box-shadow:0 7px 20px rgba(33,54,100,.055); }
+.mensagem-erro { box-shadow:0 6px 18px rgba(173,48,48,.045); }
+.rodape { align-items:flex-start; }
+.rodape .credito-autor { margin-left:auto; text-align:right; }
+.rodape .credito-autor a { text-underline-offset:3px; }
+:root[data-tema="escuro"] .aplicacao::before { background:radial-gradient(ellipse at 12% 0%, rgba(82,119,237,.12), transparent 58%); }
+:root[data-tema="escuro"] .cartao-temperatura:hover,:root[data-tema="escuro"] .cartao-detalhes:hover,:root[data-tema="escuro"] .secao-previsao:hover,:root[data-tema="escuro"] .secao-mapa:hover,:root[data-tema="escuro"] .secao-favoritos:hover { box-shadow:0 16px 42px rgba(0,0,0,.18); }
+@media (max-width:560px) {
+  .rodape .credito-autor { margin-left:0; text-align:left; }
+  .pesquisa-painel:focus-within { box-shadow:0 8px 25px rgba(33,54,100,.07), 0 0 0 3px rgba(53,99,233,.05); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .botao-pesquisar,.botao-localizacao,.botao-secundario,.atalhos-locais button,.lista-favoritos button,.seletor-previsao button,.cartao-dia { transition:none; }
+}

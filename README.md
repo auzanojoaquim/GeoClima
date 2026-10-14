@@ -14,7 +14,9 @@ O GeoClima combina informação meteorológica e contexto geográfico numa inter
 ## Funcionalidades
 
 - Pesquisa de localidades pelo nome.
-- Geolocalização, mediante autorização do navegador.
+- Tentativa automática de geolocalização ao abrir a aplicação, mediante autorização do navegador.
+- Recuperação da última localização consultada caso a localização automática não esteja disponível.
+- Mensagens específicas para permissão recusada, localização indisponível e tempo de espera excedido.
 - Condições atuais: temperatura, sensação térmica, máximas e mínimas, humidade, vento, pressão, visibilidade e nebulosidade.
 - Previsão resumida para cinco dias.
 - Mapa interativo.
@@ -82,6 +84,8 @@ Siga as instruções para associar o diretório ao projeto da Vercel. O servidor
 5. Selecione os ambientes em que a variável deve estar disponível, pelo menos **Production** e também **Preview** se usar deployments de pré-visualização.
 6. Guarde as alterações e faça um novo deployment.
 
+A geolocalização do navegador exige HTTPS (a Vercel disponibiliza HTTPS por padrão) e autorização do utilizador. Se o pedido automático for recusado ou falhar, a aplicação tenta recuperar a última localização consultada; sem histórico, apresenta uma mensagem e permite pesquisar uma cidade manualmente. Para corrigir uma permissão recusada, abra as permissões do site no navegador e permita a localização. Em Android, confirme também que a localização/GPS do dispositivo está ativada.
+
 A variável `API_KEY` tem de ser configurada no projeto correto da Vercel. Alterar as variáveis não atualiza deployments antigos: publique novamente para aplicar a configuração.
 
 ### Verificar a rota
@@ -133,7 +137,7 @@ GeoClima/
 ## Privacidade e segurança
 
 - A chave `API_KEY` é usada apenas no servidor pela função da Vercel e não deve ser incluída no código do frontend.
-- A geolocalização só é solicitada quando a pessoa escolhe essa opção.
+- A aplicação tenta obter a localização ao abrir e solicita autorização ao navegador; também disponibiliza um botão para tentar novamente manualmente.
 - O navegador gere a autorização da localização.
 - Favoritos, histórico, tema e última localização são guardados no `localStorage` do navegador.
 - As consultas meteorológicas são enviadas à OpenWeather e os mapas são carregados a partir dos serviços cartográficos utilizados pelo projeto.
