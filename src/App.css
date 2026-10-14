@@ -1,64 +1,64 @@
 #root { min-height: 100vh; }
-.aplicacao { width: min(1120px, calc(100% - 48px)); margin: 0 auto; }
-.cabecalho { height: 88px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--borda); }
-.marca { display:flex; align-items:center; gap:11px; font:800 22px Manrope,sans-serif; letter-spacing:-.8px; }
-.marca > span:last-child { display:flex; flex-direction:column; line-height:1.1; }
-.marca > span:last-child > span { color:var(--azul); display:inline; }
-.marca small { margin-top:5px; color:var(--texto-suave); font:500 10px 'DM Sans',sans-serif; letter-spacing:.2px; }
-.marca-icone { width:42px;height:42px;display:grid;place-items:center;background:#e9efff;color:#3563e9;border-radius:14px; }
-.acoes-cabecalho { display:flex;align-items:center;gap:22px; }
+.aplicacao { width:min(1180px,calc(100% - 56px)); margin:0 auto; }
+.cabecalho { height:88px; display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--borda); }
+.marca { display:flex;align-items:center;gap:12px;font:800 22px Manrope,sans-serif;letter-spacing:-.8px; }
+.marca > span:last-child { display:flex;flex-direction:column;line-height:1.1; }
+.marca > span:last-child > span { color:var(--azul);display:inline; }
+.marca small { margin-top:5px;color:var(--texto-suave);font:500 10px 'DM Sans',sans-serif;letter-spacing:.2px; }
+.marca-icone { width:44px;height:44px;display:grid;place-items:center;background:linear-gradient(145deg,#dff7ff,#e5eaff);color:#1768d5;border-radius:15px;box-shadow:inset 0 0 0 1px #ffffffa8; }
+.acoes-cabecalho { display:flex;align-items:center;gap:20px; }
 .estado-servico,.temperatura-ponto,.etiqueta-ao-vivo { display:flex;align-items:center;gap:8px;font-size:12px;color:var(--texto-suave); }
-.estado-servico > span,.temperatura-ponto i,.etiqueta-ao-vivo span,.etiqueta-mapa > span { width:7px;height:7px;background:#29b67b;border-radius:50%;box-shadow:0 0 0 4px rgba(41,182,123,.12); }
-.botao-icone { width:42px;height:42px;border:1px solid var(--borda);border-radius:13px;background:var(--cartao);color:var(--texto);display:grid;place-items:center;transition:.2s; }
-.botao-icone:hover { border-color:var(--azul);color:var(--azul);transform:translateY(-1px); }
-.introducao { min-height:248px;display:flex;align-items:center;justify-content:space-between;position:relative;overflow:hidden; }
-.sobretitulo { color:var(--azul);font-size:10px;font-weight:700;letter-spacing:1.7px;display:flex;align-items:center;gap:7px; }
-.introducao h1 { font:800 clamp(32px,4vw,45px)/1.15 Manrope,sans-serif;letter-spacing:-1.8px;margin:15px 0 10px; }
-.introducao h1 span { color:var(--azul); }
-.introducao p { color:var(--texto-suave);font-size:14px;margin:0; }
-.ilustracao-clima { width:260px;height:190px;position:relative;display:grid;place-items:center;margin-right:55px; }
-.ilustracao-clima:before { content:"";position:absolute;width:190px;height:190px;background:linear-gradient(140deg,#e6edff,#f0f5ff);border-radius:50%; }
-.sol-ilustrado { position:absolute;width:94px;height:94px;right:20px;top:10px;color:#f5b83d;stroke-width:1.1; }
-.nuvem-ilustrada { position:relative;width:160px;height:160px;color:#6486f2;fill:#d9e4ff;stroke-width:1.15;filter:drop-shadow(0 12px 8px rgba(62,91,180,.15)); }
-.pesquisa-painel { display:flex;gap:14px;padding:17px;background:var(--cartao);border:1px solid var(--borda);border-radius:18px;box-shadow:var(--sombra); }
-.formulario-pesquisa { display:flex;align-items:center;gap:12px;flex:1;min-width:0;color:var(--texto-suave);padding-left:10px; }
+.estado-servico>span,.temperatura-ponto i,.etiqueta-ao-vivo span { width:7px;height:7px;border-radius:50%;background:#27b783;box-shadow:0 0 0 4px #27b7831b; }
+.botao-icone { width:43px;height:43px;display:grid;place-items:center;border:1px solid var(--borda);border-radius:14px;background:var(--cartao);color:var(--texto);transition:transform .2s,border-color .2s; }
+.botao-icone:hover { transform:translateY(-2px);border-color:var(--azul); }
+.introducao { position:relative;overflow:hidden;min-height:285px;display:flex;align-items:center;justify-content:space-between;padding:38px 52px;margin:28px 0 22px;border-radius:28px;background:radial-gradient(circle at 82% 15%,#5fe1df65,transparent 25%),radial-gradient(circle at 72% 100%,#6388ff77,transparent 36%),linear-gradient(115deg,#102a52 0%,#174e82 55%,#267b9b 100%);color:#fff;box-shadow:0 20px 50px #123e6526; }
+.introducao:after { content:"";position:absolute;width:310px;height:310px;border:1px solid #ffffff22;border-radius:50%;right:45px;top:-140px;box-shadow:0 0 0 35px #ffffff08,0 0 0 70px #ffffff06;pointer-events:none; }
+.introducao-texto { position:relative;z-index:1;max-width:610px; }
+.sobretitulo { display:inline-flex;align-items:center;gap:7px;color:var(--texto-suave);font-size:10px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase; }
+.introducao .sobretitulo { color:#b9e9ff; }
+.introducao h1 { font:800 clamp(34px,4.5vw,51px)/1.12 Manrope,sans-serif;letter-spacing:-2px;margin:17px 0 13px; }
+.introducao h1 span { color:#82e4e1; }
+.introducao p { color:#d2e6f5;font-size:14px;line-height:1.7;margin:0;max-width:470px; }
+.ilustracao-clima { width:245px;height:205px;position:relative;display:grid;place-items:center;margin-right:16px;z-index:1; }
+.ilustracao-clima:before { content:"";position:absolute;width:180px;height:180px;background:linear-gradient(140deg,#b4f5ed55,#dceaff20);border:1px solid #ffffff42;border-radius:50%;backdrop-filter:blur(3px); }
+.sol-ilustrado { position:absolute;width:90px;height:90px;right:22px;top:10px;color:#ffe28b;stroke-width:1.2;filter:drop-shadow(0 0 20px #ffe28b66); }
+.nuvem-ilustrada { position:relative;width:155px;height:155px;color:#e3f5ff;fill:#b9e7f5;stroke-width:1.15;filter:drop-shadow(0 18px 14px #0b2c5a44); }
+.pesquisa-painel { display:flex;gap:12px;padding:12px;background:var(--cartao);border:1px solid var(--borda);border-radius:20px;box-shadow:var(--sombra); }
+.formulario-pesquisa { display:flex;align-items:center;gap:12px;flex:1;min-width:0;color:var(--texto-suave);padding:0 8px 0 12px; }
 .formulario-pesquisa input { width:100%;min-width:0;border:0;outline:0;background:transparent;color:var(--texto);font-size:14px; }
 .formulario-pesquisa input::placeholder { color:var(--texto-suave); }
 .limpar-pesquisa { border:0;background:transparent;color:var(--texto-suave);display:grid;place-items:center; }
-.botao-pesquisar,.botao-localizacao { border:0;border-radius:12px;padding:13px 18px;display:flex;align-items:center;justify-content:center;gap:9px;font-size:13px;font-weight:700;white-space:nowrap;transition:.2s; }
-.botao-pesquisar { background:var(--azul);color:white;box-shadow:0 6px 14px #3563e933; }
-.botao-pesquisar:hover { background:var(--azul-escuro);transform:translateY(-1px); }
-.botao-localizacao { color:var(--azul);background:#edf2ff;border:1px solid #e0e8ff; }
-:root[data-tema="escuro"] .botao-localizacao { background:#253455;border-color:#34466b; }
-.botao-localizacao:hover { background:#e0e9ff; }
-.mensagem-erro { margin-top:18px;padding:14px 16px;display:flex;gap:11px;align-items:center;background:#fff0f0;border:1px solid #ffd6d6;border-radius:12px;color:#ad3030;font-size:13px; }
+.botao-pesquisar,.botao-localizacao { border:0;border-radius:13px;padding:14px 19px;display:flex;align-items:center;justify-content:center;gap:9px;font-size:13px;font-weight:700;white-space:nowrap;transition:.2s; }
+.botao-pesquisar { background:linear-gradient(120deg,#2366e8,#368de8);color:white;box-shadow:0 7px 18px #3563e933; }
+.botao-pesquisar:hover { transform:translateY(-2px);box-shadow:0 10px 22px #3563e944; }
+.botao-localizacao { color:var(--azul);background:var(--azul-claro);border:1px solid var(--borda); }
+.botao-localizacao:hover { filter:brightness(.97); }
+.mensagem-erro { margin-top:18px;padding:14px 16px;display:flex;gap:11px;align-items:center;background:#fff0f0;border:1px solid #ffd6d6;border-radius:14px;color:#ad3030;font-size:13px; }
 .mensagem-erro span { flex:1; }.mensagem-erro button { border:0;background:transparent;color:inherit;display:grid;place-items:center; }
 .estado-carregamento { display:flex;justify-content:center;align-items:center;gap:10px;padding:25px;color:var(--texto-suave);font-size:13px; }
 .girador { width:17px;height:17px;border:2px solid var(--borda);border-top-color:var(--azul);border-radius:50%;animation:girar .7s linear infinite; }
 @keyframes girar { to { transform:rotate(360deg); } }
-.estado-inicial { text-align:center;padding:66px 20px 74px; }
-.estado-inicial-icone { margin:0 auto 18px;width:60px;height:60px;display:grid;place-items:center;border-radius:20px;color:var(--azul);background:#e9efff; }
-.estado-inicial h2 { margin:0;font:700 22px Manrope,sans-serif;letter-spacing:-.5px; }
-.estado-inicial > p { color:var(--texto-suave);font-size:13px;margin:10px 0 0; }
+.estado-inicial { text-align:center;padding:70px 20px 78px; }
+.estado-inicial-icone { margin:0 auto 18px;width:64px;height:64px;display:grid;place-items:center;border-radius:22px;color:var(--azul);background:var(--azul-claro);box-shadow:0 10px 25px #3563e914; }
+.estado-inicial h2 { margin:0;font:800 24px Manrope,sans-serif;letter-spacing:-.7px; }
+.estado-inicial>p { color:var(--texto-suave);font-size:13px;margin:10px 0 0; }
 .atalhos-locais { margin:26px auto 0;display:flex;align-items:center;justify-content:center;gap:9px;flex-wrap:wrap; }
-.atalhos-locais > span { display:flex;align-items:center;gap:6px;color:var(--texto-suave);font-size:12px;margin-right:4px; }
-.atalhos-locais button { padding:8px 12px;border:1px solid var(--borda);background:var(--cartao);color:var(--texto);border-radius:9px;font-size:12px; }
-.atalhos-locais button:hover { color:var(--azul);border-color:var(--azul); }
+.atalhos-locais>span { display:flex;align-items:center;gap:6px;color:var(--texto-suave);font-size:12px;margin-right:4px; }
+.atalhos-locais button { padding:9px 13px;border:1px solid var(--borda);background:var(--cartao);color:var(--texto);border-radius:10px;font-size:12px;transition:.2s; }
+.atalhos-locais button:hover { color:var(--azul);border-color:var(--azul);transform:translateY(-1px); }
 .linha-titulo { margin:39px 0 20px;display:flex;justify-content:space-between;align-items:center;gap:18px; }
 .linha-titulo h2,.cabecalho-secao h2 { font:800 25px Manrope,sans-serif;letter-spacing:-.8px;margin:7px 0 5px; }
-.pais { margin-left:9px;vertical-align:middle;font:600 11px 'DM Sans',sans-serif;color:var(--texto-suave);background:var(--borda);padding:5px 7px;border-radius:6px;letter-spacing:.4px; }
 .linha-titulo p { display:flex;align-items:center;gap:6px;color:var(--texto-suave);font-size:12px;margin:0; }
+.pais { margin-left:9px;vertical-align:middle;font:600 11px 'DM Sans',sans-serif;color:var(--texto-suave);background:var(--azul-claro);padding:5px 8px;border-radius:7px;letter-spacing:.4px; }
 .acoes-clima { display:flex;gap:9px;align-items:center; }
-.botao-secundario { display:flex;align-items:center;gap:8px;padding:11px 14px;border:1px solid var(--borda);border-radius:11px;background:var(--cartao);color:var(--texto);font-size:12px;font-weight:600; }
-.botao-secundario:hover,.botao-secundario.selecionado { color:var(--azul);border-color:#b8c8ff;background:#f0f4ff; }
-:root[data-tema="escuro"] .botao-secundario.selecionado { background:#253455; }
-.painel-principal { display:grid;grid-template-columns:.86fr 1.14fr;gap:18px; }
-.cartao-temperatura,.cartao-detalhes,.secao-previsao,.secao-mapa,.secao-favoritos { background:var(--cartao);border:1px solid var(--borda);border-radius:18px;box-shadow:var(--sombra); }
-.cartao-temperatura { padding:23px 25px 0;overflow:hidden;background:linear-gradient(145deg,var(--cartao),var(--cartao));position:relative; }
-.cartao-temperatura:before { content:"";position:absolute;width:210px;height:210px;border-radius:50%;background:rgba(91,128,245,.07);top:-100px;right:-80px; }
+.botao-secundario { display:flex;align-items:center;gap:8px;padding:11px 14px;border:1px solid var(--borda);border-radius:12px;background:var(--cartao);color:var(--texto);font-size:12px;font-weight:600;transition:.2s; }
+.botao-secundario:hover,.botao-secundario.selecionado { color:var(--azul);border-color:#b8c8ff;background:var(--azul-claro); }
+.painel-principal { display:grid;grid-template-columns:.9fr 1.1fr;gap:18px; }
+.cartao-temperatura,.cartao-detalhes,.secao-previsao,.secao-mapa,.secao-favoritos { background:var(--cartao);border:1px solid var(--borda);border-radius:22px;box-shadow:var(--sombra); }
+.cartao-temperatura { padding:25px 27px 0;overflow:hidden;background:linear-gradient(145deg,var(--cartao),var(--cartao));position:relative; }
+.cartao-temperatura:before { content:"";position:absolute;width:250px;height:250px;border-radius:50%;background:radial-gradient(circle,#5f9aff20,transparent 70%);top:-100px;right:-85px;pointer-events:none; }
 .temperatura-topo { display:flex;justify-content:space-between;align-items:center;color:var(--texto-suave);font-size:10px;font-weight:700;letter-spacing:1.4px;position:relative; }
-.temperatura-ponto { font-weight:500;letter-spacing:0;font-size:11px; }
-.temperatura-ponto i { display:inline-block;width:6px;height:6px; }
+.temperatura-ponto { font-weight:600;letter-spacing:0;font-size:11px; }
 .temperatura-centro { display:flex;align-items:center;justify-content:space-between;position:relative;margin-top:20px; }
 .valor-temperatura { font:800 clamp(66px,7vw,88px)/1 Manrope,sans-serif;letter-spacing:-6px;color:var(--texto); }
 .valor-temperatura sup { font-size:.43em;vertical-align:top;letter-spacing:-2px;margin-left:3px; }
@@ -67,64 +67,47 @@
 .descricao-clima { font:700 18px Manrope,sans-serif;text-transform:capitalize;margin:8px 0 10px; }
 .temperaturas-extremas { display:flex;gap:10px;align-items:center;color:var(--texto-suave);font-size:12px; }
 .temperaturas-extremas strong { color:var(--texto);margin-left:3px; }
-.cartao-temperatura-rodape { display:flex;align-items:center;gap:8px;margin:25px -25px 0;padding:15px 25px;background:rgba(105,135,218,.07);border-top:1px solid var(--borda);color:var(--texto-suave);font-size:12px; }
+.cartao-temperatura-rodape { display:flex;align-items:center;gap:8px;margin:25px -27px 0;padding:16px 27px;background:var(--azul-claro);border-top:1px solid var(--borda);color:var(--texto-suave);font-size:12px; }
 .cartao-temperatura-rodape strong { color:var(--texto); }.cartao-temperatura-rodape svg { margin-left:auto;color:var(--azul); }
-.cartao-detalhes { padding:23px 23px 18px; }
-.cartao-cabecalho { display:flex;align-items:center;justify-content:space-between;margin-bottom:20px; }
+.cartao-detalhes { padding:25px 25px 20px; }
+.cartao-cabecalho { display:flex;align-items:center;justify-content:space-between;margin-bottom:22px; }
 .cartao-cabecalho h3 { font:700 16px Manrope,sans-serif;margin:6px 0 0; }
 .etiqueta-ao-vivo { font-size:9px;letter-spacing:.8px;font-weight:700;color:#28a574; }
-.etiqueta-ao-vivo span { width:6px;height:6px; }
-.grelha-detalhes { display:grid;grid-template-columns:1fr 1fr;gap:20px 12px; }
+.grelha-detalhes { display:grid;grid-template-columns:1fr 1fr;gap:22px 14px; }
 .detalhe { display:flex;align-items:center;gap:11px;min-width:0; }
-.detalhe-icone { width:40px;height:40px;flex-shrink:0;border-radius:12px;display:grid;place-items:center; }
+.detalhe-icone { width:42px;height:42px;flex-shrink:0;border-radius:14px;display:grid;place-items:center; }
 .detalhe-icone svg { width:19px;height:19px; }
 .temperatura { color:#ed9b34;background:#fff4e3; }.humidade { color:#3885ec;background:#eaf2ff; }.vento { color:#1baf9c;background:#e3f8f4; }.pressao { color:#8668dc;background:#f0ebff; }.visibilidade { color:#2b9c65;background:#e5f7ec; }.chuva { color:#5382e7;background:#eaf0ff; }
 .detalhe div { display:flex;flex-direction:column;gap:5px;min-width:0; }
 .detalhe small { font-size:10px;color:var(--texto-suave);white-space:nowrap; }
 .detalhe strong { font:700 17px Manrope,sans-serif;white-space:nowrap; }
 .detalhe strong small { font:500 10px 'DM Sans',sans-serif; }
-.sol-info { display:flex;gap:30px;border-top:1px solid var(--borda);margin-top:22px;padding-top:16px; }
-.sol-info > div { display:flex;align-items:center;gap:9px;color:#e6a43d; }
-.sol-info span { display:flex;flex-direction:column;gap:3px; }.sol-info small { color:var(--texto-suave);font-size:10px; }.sol-info strong { color:var(--texto);font-size:13px; }
-.secao-previsao,.secao-mapa,.secao-favoritos { margin-top:22px;padding:24px; }
-.cabecalho-secao { display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:20px; }
+.sol-info { display:flex;gap:30px;border-top:1px solid var(--borda);margin-top:23px;padding-top:17px; }
+.sol-info>div { display:flex;align-items:center;gap:9px;color:#e6a43d; }.sol-info span { display:flex;flex-direction:column;gap:3px; }.sol-info small { color:var(--texto-suave);font-size:10px; }.sol-info strong { color:var(--texto);font-size:13px; }
+.secao-previsao,.secao-mapa,.secao-favoritos { margin-top:22px;padding:26px; }
+.cabecalho-secao { display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:21px; }
 .cabecalho-secao h2 { font-size:19px;margin:6px 0 0; }
-.seletor-previsao { display:flex;gap:4px;padding:4px;background:var(--fundo);border:1px solid var(--borda);border-radius:10px; }
-.seletor-previsao button { padding:7px 12px;border:0;border-radius:7px;background:transparent;color:var(--texto-suave);font-size:11px; }
+.seletor-previsao { display:flex;gap:4px;padding:4px;background:var(--fundo);border:1px solid var(--borda);border-radius:11px; }
+.seletor-previsao button { padding:8px 13px;border:0;border-radius:8px;background:transparent;color:var(--texto-suave);font-size:11px; }
 .seletor-previsao button.ativo { background:var(--cartao);color:var(--azul);box-shadow:0 2px 7px #1b32600d;font-weight:700; }
 .grelha-previsao { display:grid;grid-template-columns:repeat(5,1fr);gap:12px; }
-.cartao-dia { display:flex;align-items:center;flex-direction:column;padding:17px 9px 14px;border:1px solid var(--borda);border-radius:13px;background:var(--fundo);min-width:0; }
-.cartao-dia > span { font-weight:700;font-size:12px;text-transform:capitalize; }.cartao-dia > small { color:var(--texto-suave);font-size:10px;margin-top:4px; }
+.cartao-dia { display:flex;align-items:center;flex-direction:column;padding:18px 10px 15px;border:1px solid var(--borda);border-radius:16px;background:var(--fundo);min-width:0;transition:transform .2s,border-color .2s; }
+.cartao-dia:hover { transform:translateY(-3px);border-color:#9bb8ff; }
+.cartao-dia>span { font-weight:700;font-size:12px;text-transform:capitalize; }.cartao-dia>small { color:var(--texto-suave);font-size:10px;margin-top:4px; }
 .cartao-dia img { width:68px;height:62px;object-fit:contain;margin:5px 0; }
-.cartao-dia > strong { font:800 24px Manrope,sans-serif; }
-.cartao-dia p { font-size:10px;color:var(--texto-suave);text-transform:capitalize;margin:5px 0 14px;text-align:center; }
-.cartao-dia > div { display:flex;align-items:center;gap:7px;width:100%;justify-content:center;font-size:10px;color:var(--texto-suave); }
-.cartao-dia > div i { height:4px;width:28px;border-radius:5px;background:linear-gradient(90deg,#b9d3ff,#f4b64c); }
+.cartao-dia>strong { font:800 24px Manrope,sans-serif; }.cartao-dia p { font-size:10px;color:var(--texto-suave);text-transform:capitalize;margin:5px 0 14px;text-align:center; }
+.cartao-dia>div { display:flex;align-items:center;gap:7px;width:100%;justify-content:center;font-size:10px;color:var(--texto-suave); }.cartao-dia>div i { height:4px;width:28px;border-radius:5px;background:linear-gradient(90deg,#b9d3ff,#f4b64c); }
 .coordenadas { color:var(--texto-suave);font-size:11px;font-variant-numeric:tabular-nums; }
-.mapa-conteiner { height:310px;position:relative;overflow:hidden;border-radius:13px;border:1px solid var(--borda); }
-.mapa-interativo { height:100%;width:100%; }
-.etiqueta-mapa { position:absolute;z-index:500;top:12px;left:12px;background:var(--cartao);border:1px solid var(--borda);border-radius:9px;padding:8px 11px;display:flex;align-items:center;gap:8px;font-size:11px;font-weight:600;box-shadow:0 4px 15px #14244316; }
-.etiqueta-mapa > span { width:6px;height:6px; }
+.mapa-conteiner { height:330px;position:relative;overflow:hidden;border-radius:16px;border:1px solid var(--borda); }.mapa-interativo { height:100%;width:100%; }
+.etiqueta-mapa { position:absolute;z-index:500;top:12px;left:12px;background:var(--cartao);border:1px solid var(--borda);border-radius:10px;padding:9px 12px;display:flex;align-items:center;gap:8px;font-size:11px;font-weight:600;box-shadow:0 4px 15px #14244316; }.etiqueta-mapa>span { width:6px;height:6px;border-radius:50%;background:#28b783; }
 .mapa-vazio { display:grid;place-items:center;min-height:170px;background:var(--fundo);color:var(--texto-suave);font-size:13px;border-radius:12px; }
 .secao-mapa .cabecalho-secao { margin-bottom:17px; }
 .lista-favoritos { display:grid;grid-template-columns:repeat(3,1fr);gap:11px; }
-.lista-favoritos button { display:flex;align-items:center;gap:10px;text-align:left;padding:13px;border:1px solid var(--borda);border-radius:12px;background:var(--fundo);color:var(--azul); }
-.lista-favoritos button > span:nth-child(2) { display:flex;flex-direction:column;gap:3px;color:var(--texto);font-weight:700;font-size:12px;flex:1; }
-.lista-favoritos small { color:var(--texto-suave);font-weight:400;font-size:10px; }
-.seta-favorito { font-size:16px; }
-.rodape { margin-top:45px;padding:24px 0 30px;border-top:1px solid var(--borda);display:flex;align-items:center;gap:18px; }
-.marca-rodape { font-size:17px; }.marca-rodape .marca-icone { width:34px;height:34px;border-radius:10px; }
-.rodape p,.rodape > span { color:var(--texto-suave);font-size:11px; }.rodape > span { margin-left:auto; }
-@media (max-width:800px) {
- .aplicacao { width:calc(100% - 30px); }.introducao { min-height:220px; }.ilustracao-clima { margin-right:0;width:180px;transform:scale(.8); }
- .painel-principal { grid-template-columns:1fr; }.cartao-temperatura { min-height:300px; }.valor-temperatura { font-size:80px; }
- .lista-favoritos { grid-template-columns:repeat(2,1fr); }.rodape { flex-wrap:wrap; }.rodape > span { margin-left:0;width:100%; }
-}
-@media (max-width:560px) {
- .aplicacao { width:calc(100% - 24px); }.cabecalho { height:72px; }.marca { font-size:19px; }.marca-icone { width:38px;height:38px; }.estado-servico { display:none; }
- .introducao { min-height:205px; }.introducao h1 { font-size:32px; }.introducao p { max-width:270px;line-height:1.5;font-size:12px; }.ilustracao-clima { position:absolute;right:-55px;opacity:.45;transform:scale(.72); }
- .introducao-texto { position:relative;z-index:1; }.pesquisa-painel { flex-direction:column;padding:12px;gap:10px;border-radius:14px; }.formulario-pesquisa { min-height:46px; }.formulario-pesquisa input { font-size:12px; }.botao-pesquisar { padding:11px 12px;font-size:11px; }.botao-localizacao { padding:12px; }
- .linha-titulo { align-items:flex-start;margin-top:30px; }.linha-titulo h2 { font-size:22px; }.acoes-clima { gap:6px; }.botao-secundario { padding:10px;font-size:0;gap:0; }.botao-secundario svg { width:18px;height:18px; }.botao-icone { width:39px;height:39px; }
- .cartao-temperatura { padding:20px 20px 0; }.cartao-temperatura-rodape { margin-left:-20px;margin-right:-20px;padding-left:20px;padding-right:20px; }.cartao-detalhes { padding:19px 16px; }.grelha-detalhes { gap:18px 8px; }.detalhe { gap:8px; }.detalhe-icone { width:35px;height:35px; }.detalhe small { font-size:9px; }.detalhe strong { font-size:15px; }
- .sol-info { justify-content:space-between;gap:10px; }.secao-previsao,.secao-mapa,.secao-favoritos { padding:17px 13px; }.cabecalho-secao h2 { font-size:17px; }.grelha-previsao { grid-template-columns:repeat(5,minmax(95px,1fr));overflow-x:auto;padding-bottom:5px; }.cartao-dia { padding:14px 5px; }.seletor-previsao { display:none; }.mapa-conteiner { height:270px; }.lista-favoritos { grid-template-columns:1fr; }.rodape { gap:12px; }.rodape p { width:100%;margin:0; }.rodape > span { line-height:1.5; }
-}
+.lista-favoritos button { display:flex;align-items:center;gap:10px;text-align:left;padding:14px;border:1px solid var(--borda);border-radius:14px;background:var(--fundo);color:var(--azul);transition:.2s; }
+.lista-favoritos button:hover { border-color:var(--azul);transform:translateY(-2px); }
+.lista-favoritos button>span:nth-child(2) { display:flex;flex-direction:column;gap:4px;color:var(--texto);font-weight:700;font-size:12px;flex:1; }.lista-favoritos small { color:var(--texto-suave);font-weight:400;font-size:10px; }.seta-favorito { font-size:16px; }
+.rodape { margin-top:48px;padding:25px 0 28px;border-top:1px solid var(--borda);display:flex;align-items:center;gap:18px;flex-wrap:wrap; }
+.marca-rodape { font-size:17px; }.marca-rodape .marca-icone { width:36px;height:36px;border-radius:12px; }
+.rodape p,.rodape>span { color:var(--texto-suave);font-size:11px; }.rodape p { margin:0; }.creditos-dados { margin-left:auto; }.credito-autor { width:100%;padding-top:16px;border-top:1px solid var(--borda);color:var(--texto-suave);font-size:12px;text-align:center; }.credito-autor a { color:var(--azul);font-weight:800;text-decoration:none; }.credito-autor a:hover { text-decoration:underline; }
+@media (max-width:800px) { .aplicacao { width:calc(100% - 32px); }.introducao { min-height:240px;padding:32px; }.ilustracao-clima { margin-right:-10px;width:180px;transform:scale(.82); }.painel-principal { grid-template-columns:1fr; }.cartao-temperatura { min-height:300px; }.valor-temperatura { font-size:80px; }.lista-favoritos { grid-template-columns:repeat(2,1fr); }.creditos-dados { margin-left:0; } }
+@media (max-width:560px) { .aplicacao { width:calc(100% - 24px); }.cabecalho { height:72px; }.marca { font-size:19px; }.marca-icone { width:39px;height:39px; }.estado-servico { display:none; }.introducao { min-height:230px;padding:27px 22px;border-radius:22px;margin-top:18px; }.introducao h1 { font-size:32px;letter-spacing:-1.3px; }.introducao p { max-width:265px;line-height:1.6;font-size:12px; }.ilustracao-clima { position:absolute;right:-62px;bottom:-28px;opacity:.48;transform:scale(.72); }.introducao-texto { position:relative;z-index:1; }.pesquisa-painel { flex-direction:column;padding:11px;gap:10px;border-radius:16px; }.formulario-pesquisa { min-height:47px; }.formulario-pesquisa input { font-size:12px; }.botao-pesquisar { padding:11px 12px;font-size:11px; }.botao-localizacao { padding:12px; }.linha-titulo { align-items:flex-start;margin-top:30px; }.linha-titulo h2 { font-size:22px; }.acoes-clima { gap:6px; }.botao-secundario { padding:10px;font-size:0;gap:0; }.botao-secundario svg { width:18px;height:18px; }.botao-icone { width:39px;height:39px; }.cartao-temperatura { padding:20px 20px 0; }.cartao-temperatura-rodape { margin-left:-20px;margin-right:-20px;padding-left:20px;padding-right:20px; }.cartao-detalhes { padding:19px 16px; }.grelha-detalhes { gap:18px 8px; }.detalhe { gap:8px; }.detalhe-icone { width:35px;height:35px; }.detalhe small { font-size:9px; }.detalhe strong { font-size:15px; }.sol-info { justify-content:space-between;gap:10px; }.secao-previsao,.secao-mapa,.secao-favoritos { padding:18px 13px;border-radius:18px; }.cabecalho-secao h2 { font-size:17px; }.grelha-previsao { grid-template-columns:repeat(5,minmax(95px,1fr));overflow-x:auto;padding-bottom:5px; }.cartao-dia { padding:14px 5px; }.seletor-previsao { display:none; }.mapa-conteiner { height:270px; }.lista-favoritos { grid-template-columns:1fr; }.rodape { gap:12px;margin-top:36px; }.rodape p { width:100%;line-height:1.6; }.creditos-dados { line-height:1.5; }.credito-autor { margin-top:3px; } }

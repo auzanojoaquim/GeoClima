@@ -7,7 +7,7 @@ import {
 import Mapa from "./components/Mapa";
 import CartaoClima from "./components/CartaoClima";
 
-const CHAVE_API = import.meta.env.API_KEY;
+const CHAVE_API = import.meta.env.VITE_API_KEY;
 const CHAVE_HISTORICO = "geoclima:historico";
 const CHAVE_FAVORITOS = "geoclima:favoritos";
 const CHAVE_TEMA = "geoclima:tema";
@@ -52,7 +52,7 @@ function App() {
 
   const consultarClima = useCallback(async (consulta, tipo = "q") => {
     if (!CHAVE_API) {
-      definirErro("Configure a variável API_KEY no ficheiro .env para consultar os dados meteorológicos.");
+      definirErro("Configure a variável VITE_API_KEY no ficheiro .env para consultar os dados meteorológicos.");
       return;
     }
     definirCarregando(true);
@@ -232,7 +232,12 @@ function App() {
 
       {favoritos.length > 0 && <section className="secao-favoritos"><div className="cabecalho-secao"><div><span className="sobretitulo">ACESSO RÁPIDO</span><h2>Locais guardados</h2></div></div><div className="lista-favoritos">{favoritos.map((item) => <button key={`${item.nome}-${item.pais}`} onClick={() => consultarClima(item, "coords")}><Heart size={16} fill="currentColor" /><span>{item.nome}<small>{item.pais}</small></span><span className="seta-favorito">↗</span></button>)}</div></section>}
 
-      <footer className="rodape"><a className="marca marca-rodape" href="#"><span className="marca-icone"><CloudSun size={20} /></span><span>Geo<span>Clima</span></span></a><p>Informação meteorológica para explorar melhor o mundo.</p><span>Dados por OpenWeather · Mapas por OpenStreetMap</span></footer>
+      <footer className="rodape">
+        <a className="marca marca-rodape" href="#" aria-label="GeoClima - voltar ao início"><span className="marca-icone"><CloudSun size={20} /></span><span>Geo<span>Clima</span></span></a>
+        <p>Informação meteorológica para explorar melhor o mundo.</p>
+        <span className="creditos-dados">Dados por OpenWeather · Mapas por OpenStreetMap</span>
+        <div className="credito-autor">Desenvolvido por <a href="https://auzanojoquim.vercel.app" target="_blank" rel="noreferrer">Auzano Joaquim</a></div>
+      </footer>
     </main>
   );
 }

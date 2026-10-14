@@ -1,163 +1,145 @@
-# GeoClima
+<div align="center">
 
-**O tempo, no seu mapa.** Uma aplicação web de meteorologia e exploração geográfica construída com React, Vite e Leaflet. Consulte as condições atuais, acompanhe a previsão para os próximos cinco dias e guarde os locais que visita com frequência.
+# 🌦️ GeoClima
 
-![Estado do projeto](https://img.shields.io/badge/estado-em_desenvolvimento-3563e9?style=for-the-badge)
-![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=111)
-![Vite](https://img.shields.io/badge/Vite-7-646CFF?style=for-the-badge&logo=vite&logoColor=white)
-![Licença MIT](https://img.shields.io/badge/licença-MIT-2ea44f?style=for-the-badge)
+### O tempo, no seu mapa.
 
-## Visão geral
+Consulte as condições meteorológicas, compare a previsão dos próximos dias e explore localidades num mapa interativo — numa experiência responsiva, simples e moderna.
 
-O GeoClima reúne dados meteorológicos e contexto geográfico numa interface responsiva, com tema claro e escuro. A aplicação utiliza a API da OpenWeather para os dados de meteorologia e o OpenStreetMap para a cartografia.
+![React](https://img.shields.io/badge/React-19-149eca?style=flat-square&logo=react&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-7-646cff?style=flat-square&logo=vite&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES2022-f7df1e?style=flat-square&logo=javascript&logoColor=222)
+![OpenWeather](https://img.shields.io/badge/Dados-OpenWeather-orange?style=flat-square)
+![Licença MIT](https://img.shields.io/badge/licença-MIT-28a745?style=flat-square)
+
+</div>
+
+---
+
+## ✨ Sobre o projeto
+
+O **GeoClima** é uma aplicação meteorológica que reúne pesquisa de localidades, condições atuais, previsão de cinco dias, geolocalização e mapa interativo. A interface adapta-se a computadores e dispositivos móveis e permite alternar entre os temas claro e escuro.
 
 ## Funcionalidades
 
-- **Pesquisa de localidades:** consulte uma cidade pelo nome.
-- **Geolocalização:** obtenha o clima da sua posição atual, mediante autorização do navegador.
-- **Condições atuais:** temperatura, sensação térmica, temperatura máxima e mínima, humidade, vento, pressão, visibilidade e nebulosidade.
-- **Previsão para cinco dias:** resumo diário com temperatura, intervalo térmico e descrição das condições.
-- **Mapa interativo:** visualize e explore a localização selecionada.
-- **Favoritos:** guarde até dez locais para acesso rápido.
-- **Histórico recente:** retome as últimas localidades consultadas.
-- **Tema claro e escuro:** a preferência fica guardada no navegador.
-- **Persistência local:** tema, favoritos, histórico e última localização ficam disponíveis entre sessões no mesmo navegador.
-- **Interface adaptável:** experiência ajustada a computadores, tablets e telemóveis.
-- **Estados de carregamento e erro:** mensagens para falhas de pesquisa, ligação ou geolocalização.
+- **Pesquisa de localidades:** consulta por nome de cidade ou localidade.
+- **Geolocalização:** consulta baseada na localização atual, mediante autorização do navegador.
+- **Condições atuais:** temperatura, sensação térmica, humidade, vento, pressão atmosférica, visibilidade e nebulosidade.
+- **Previsão para cinco dias:** temperaturas previstas, mínimas, máximas e descrição das condições.
+- **Nascer e pôr do sol:** horários apresentados para a localidade consultada.
+- **Mapa interativo:** visualização da localização e das coordenadas.
+- **Favoritos:** guarda até dez localidades para acesso rápido.
+- **Histórico recente:** facilita a repetição de pesquisas anteriores.
+- **Tema claro e escuro:** preferência guardada no dispositivo.
+- **Persistência local:** conserva favoritos, histórico, tema e última localidade no navegador.
+- **Interface responsiva:** navegação adaptada a ecrãs pequenos e grandes.
+- **Estados de carregamento e erro:** feedback durante as consultas meteorológicas.
 
 ## Tecnologias
 
 | Tecnologia | Utilização |
 |---|---|
 | React 19 | Interface e componentes |
-| Vite 7 | Desenvolvimento e compilação |
-| JavaScript com módulos ES | Lógica da aplicação |
-| CSS | Interface responsiva e temas |
-| Tailwind CSS | Base de utilitários disponível no projeto |
+| Vite 7 | Servidor de desenvolvimento e compilação |
+| JavaScript ES Modules | Lógica da aplicação |
+| Tailwind CSS | Base de estilos e configuração CSS |
+| Lucide React | Ícones da interface |
 | Leaflet e React Leaflet | Mapa interativo |
-| Lucide React | Ícones |
-| OpenWeather API | Condições atuais e previsão |
-| OpenStreetMap | Camadas cartográficas |
-| localStorage | Preferências e locais guardados |
+| OpenWeather API | Condições meteorológicas e previsão |
+| OpenStreetMap | Cartografia |
+| Local Storage | Preferências, histórico e favoritos |
 
 ## Requisitos
 
 - Node.js compatível com a versão do Vite instalada (Node.js 20.19+ ou 22.12+ recomendado).
 - npm.
-- Chave de API da OpenWeather.
-- Ligação à Internet para consultar meteorologia, mapas e recursos externos.
+- Uma chave API da [OpenWeather](https://openweathermap.org/api).
+- Ligação à Internet para consultar o clima, carregar os ícones meteorológicos e apresentar o mapa.
 
-## Instalação
+## Instalação e execução
+
+1. Clona o repositório e entra na pasta do projeto:
+
+   ```bash
+   git clone https://github.com/auzanojoaquim/GeoClima.git
+   cd GeoClima
+   ```
+
+2. Instala as dependências:
+
+   ```bash
+   npm install
+   ```
+
+3. Cria um ficheiro `.env` na raiz, ao lado de `package.json`, e adiciona a chave da API:
+
+   ```env
+   VITE_API_KEY=coloca_a_tua_chave_aqui
+   ```
+
+4. Inicia o servidor local:
+
+   ```bash
+   npm run dev
+   ```
+
+5. Abre o endereço apresentado no terminal, normalmente `http://localhost:5173`.
+
+O ficheiro `.env.example` serve como modelo de configuração. Não publiques chaves privadas em repositórios públicos.
+
+## Comandos disponíveis
 
 ```bash
-git clone https://github.com/auzanojoaquim/GeoClima.git
-cd GeoClima
-npm install
+npm run dev      # Inicia o servidor de desenvolvimento
+npm run lint     # Analisa o código com ESLint
+npm run build    # Gera a versão de produção em dist/
+npm run preview  # Pré-visualiza a compilação de produção
 ```
 
-Crie uma chave gratuita no portal da [OpenWeather](https://openweathermap.org/api). Na raiz do projeto, crie um ficheiro `.env` com o conteúdo:
-
-```env
-API_KEY=a_sua_chave_openweather
-```
-
-Também pode copiar o ficheiro de exemplo:
-
-```bash
-cp .env.example .env
-```
-
-Substitua o valor de exemplo pela sua chave real. Reinicie o servidor de desenvolvimento depois de alterar as variáveis de ambiente.
-
-> **Nota de segurança:** as variáveis com prefixo `VITE_` são incorporadas no código enviado ao navegador. A chave utilizada nesta aplicação é, portanto, visível no cliente. Configure os limites e a utilização da chave no painel da OpenWeather e não reutilize aqui credenciais privadas. Para ocultar a chave num ambiente de produção, implemente um serviço de backend como intermediário.
-
-## Executar em desenvolvimento
-
-```bash
-npm run dev
-```
-
-O Vite apresenta o endereço local no terminal, normalmente `http://localhost:5173`.
-
-## Verificar e compilar
-
-```bash
-npm run lint
-npm run build
-npm run preview
-```
-
-- `npm run lint`: analisa o código com ESLint.
-- `npm run build`: gera a versão de produção na pasta `dist`.
-- `npm run preview`: serve localmente a compilação para validação.
+Antes de publicar, executa `npm run lint` e `npm run build` e resolve eventuais erros reportados.
 
 ## Estrutura do projeto
 
 ```text
 GeoClima/
-├── public/
-│   └── auza.jpg
-├── screenshots/
+├── public/                  # Recursos públicos
+├── screenshots/             # Capturas de ecrã do projeto
 ├── src/
+│   ├── assets/               # Recursos importados pela aplicação
 │   ├── components/
-│   │   ├── CartaoClima.jsx
-│   │   └── Mapa.jsx
-│   ├── App.jsx
-│   ├── App.css
-│   ├── index.css
-│   └── main.jsx
-├── .env.example
-├── index.html
-├── package.json
-├── tailwind.config.js
-└── vite.config.js
+│   │   ├── CartaoClima.jsx   # Cartão das condições atuais
+│   │   └── Mapa.jsx          # Mapa e marcador da localidade
+│   ├── App.jsx               # Estado e funcionalidades principais
+│   ├── App.css               # Estilos da aplicação
+│   ├── index.css             # Estilos globais e temas
+│   └── main.jsx              # Ponto de entrada React
+├── .env.example              # Modelo das variáveis de ambiente
+├── index.html                # Documento HTML principal
+├── package.json              # Dependências e comandos
+└── vite.config.js             # Configuração do Vite
 ```
 
-## Como funciona
+## Privacidade e segurança
 
-1. A pessoa pesquisa uma localidade ou permite o acesso à localização.
-2. A aplicação consulta as condições meteorológicas atuais.
-3. Com as coordenadas devolvidas, solicita a previsão para os próximos dias.
-4. Os dados são apresentados em cartões e no mapa interativo.
-5. A localidade consultada pode ser guardada nos favoritos ou recuperada no histórico.
+- A geolocalização só é consultada após uma ação do utilizador e depende da permissão do navegador.
+- O histórico, os favoritos, o tema e a última localidade são guardados no `localStorage` do navegador.
+- Como as variáveis `VITE_*` são incorporadas no código enviado ao navegador, a chave da OpenWeather não é secreta. Para um ambiente público, configura restrições de utilização na plataforma da API ou encaminha os pedidos através de um backend.
+- Evita incluir ficheiros `.env` com credenciais no controlo de versões.
 
-## Privacidade e permissões
+## Fontes de dados
 
-- A geolocalização só é solicitada quando a pessoa escolhe essa opção.
-- O navegador gere a autorização de localização.
-- Os favoritos, o histórico, o tema e a última localização são armazenados no `localStorage` do próprio navegador.
-- Limpar os dados do site remove essas preferências guardadas.
-- As consultas meteorológicas são enviadas à OpenWeather e os mosaicos cartográficos são obtidos do OpenStreetMap.
+- **Meteorologia:** [OpenWeather](https://openweathermap.org/).
+- **Mapas:** [OpenStreetMap](https://www.openstreetmap.org/), apresentado através do Leaflet.
 
-## Limitações conhecidas
-
-- A disponibilidade e a frequência dos dados dependem do plano e dos limites da API OpenWeather.
-- A previsão apresentada depende dos dados disponibilizados pelo serviço e não substitui avisos meteorológicos oficiais.
-- A previsão diária é resumida a partir dos intervalos fornecidos pela API.
-- A aplicação requer ligação à Internet para novas consultas e para carregar os mapas.
-- O tema e os locais guardados são específicos do navegador e do dispositivo.
-
-## Ideias para evolução
-
-- Backend próprio para proteger a chave de API.
-- Testes automatizados de componentes e fluxos de pesquisa.
-- Alertas meteorológicos e notificações configuráveis.
-- Comparação entre localidades.
-- Unidades configuráveis (°C/°F e km/h/m/s).
-- Internacionalização da interface.
-- PWA com instalação e suporte offline para os últimos dados consultados.
-
-## Créditos
-
-- Meteorologia: [OpenWeather](https://openweathermap.org/api)
-- Cartografia: [OpenStreetMap](https://www.openstreetmap.org/copyright)
-- Mapas: [Leaflet](https://leafletjs.com/)
-- Ícones: [Lucide](https://lucide.dev/)
+A disponibilidade e a precisão dos dados dependem dos serviços externos e da cobertura da localidade consultada.
 
 ## Autor
 
-Desenvolvido por [Auzano Joaquim](https://github.com/auzanojoaquim).
+**Desenvolvido por Auzano Joaquim**
+
+- Portfólio: [auzanojoquim.vercel.app](https://auzanojoquim.vercel.app)
+- GitHub: [@auzanojoaquim](https://github.com/auzanojoaquim)
 
 ## Licença
 
-Distribuído sob a licença MIT. Consulte o ficheiro `LICENSE` se estiver presente no repositório.
+Este projeto está distribuído sob a licença MIT. Consulta o ficheiro [`LICENSE`](./LICENSE) para conhecer os termos.
