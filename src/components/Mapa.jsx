@@ -1,58 +1,37 @@
-import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
 import { useEffect } from "react";
-import L from 'leaflet';
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
-  iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
-  iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
-  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+  iconRetinaUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon-2x.png",
+  iconUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon.png",
+  shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png",
 });
 
-function CentralizarMapa({ coords }) {
-  const map = useMap();
-
+function CentralizarMapa({ coordenadas }) {
+  const mapa = useMap();
   useEffect(() => {
-    if (coords) {
-      const [lat, lon] = coords;
-      map.flyTo([lat, lon], 10, { duration: 1.5 });
-    }
-  }, [coords, map]);
-
+    if (coordenadas) mapa.flyTo(coordenadas, 10, { duration: 1.2 });
+  }, [coordenadas, mapa]);
   return null;
 }
 
-function Mapa({ coords }) {
-  if (!coords) {
-    return (
-      <div className="mt-6 p-4 border rounded shadow-md max-w-3xl mx-auto text-center text-gray-600 bg-white">
-        Nenhuma localização disponível.
-      </div>
-    );
-  }
-
-  const [lat, lon] = coords;
+function Mapa({ coordenadas, nomeLocal = "Localização selecionada" }) {
+  if (!coordenadas) return <div className="mapa-vazio">Pesquise uma localidade para visualizar o mapa.</div>;
 
   return (
-    <div className="h-80 w-full mt-6 border rounded max-w-lg shadow-md overflow-hidden">
-      <MapContainer 
-        center={[lat, lon]} 
-        zoom={10} 
-        className="h-full w-full" 
-        scrollWheelZoom={true}
-      >
+    <div className="mapa-conteiner">
+      <MapContainer center={coordenadas} zoom={10} className="mapa-interativo" scrollWheelZoom>
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={[lat, lon]}>
-          <Popup>
-            Localização aproximada: <br /> Lat: {lat.toFixed(4)}, Lon: {lon.toFixed(4)}
-          </Popup>
-        </Marker>
-        <CentralizarMapa coords={coords} />
+        <Marker position={coordenadas}><Popup><strong>{nomeLocal}</strong><br />{coordenadas[0].toFixed(4)}, {coordenadas[1].toFixed(4)}</Popup></Marker>
+        <CentralizarMapa coordenadas={coordenadas} />
       </MapContainer>
+      <span className="etiqueta-mapa"><span /> Mapa interativo</span>
     </div>
   );
 }
