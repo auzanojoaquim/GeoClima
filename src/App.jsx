@@ -7,7 +7,7 @@ import {
 import Mapa from "./components/Mapa";
 import CartaoClima from "./components/CartaoClima";
 
-const CHAVE_API = import.meta.env.VITE_API_KEY;
+const CHAVE_API = import.meta.env.API_KEY;
 const CHAVE_HISTORICO = "geoclima:historico";
 const CHAVE_FAVORITOS = "geoclima:favoritos";
 const CHAVE_TEMA = "geoclima:tema";
@@ -52,7 +52,7 @@ function App() {
 
   const consultarClima = useCallback(async (consulta, tipo = "q") => {
     if (!CHAVE_API) {
-      definirErro("Configure a variável VITE_API_KEY no ficheiro .env para consultar os dados meteorológicos.");
+      definirErro("Configure a variável API_KEY no ficheiro .env para consultar os dados meteorológicos.");
       return;
     }
     definirCarregando(true);

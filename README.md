@@ -58,7 +58,7 @@ npm install
 Crie uma chave gratuita no portal da [OpenWeather](https://openweathermap.org/api). Na raiz do projeto, crie um ficheiro `.env` com o conteúdo:
 
 ```env
-VITE_API_KEY=a_sua_chave_openweather
+API_KEY=a_sua_chave_openweather
 ```
 
 Também pode copiar o ficheiro de exemplo:
